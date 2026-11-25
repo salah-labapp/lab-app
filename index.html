@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="المعمل"><meta name="theme-color" content="#0b5c7a">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACKklEQVR4nO3SwRECIRQFQe6maCSbvCbgXLYoUOlXEwC/6PF4XtLHxvYX6GuDQxkcyuBQBocyOJTBoQwOZXAog0MZHMrgUAaHMjiUwaEMDmVwKINDGRzK4FAGhzI4lMGhDA5lcCiDQxkcyuBQBocyOJTBoQwOZXAog0MZHMrgUAaHMjiUwaEMDmWn4HjN3vaLFgQHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgccGRxwZHDAkcEBRwYHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgccGRxwZHDAkcEBRwYHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgccGRxwZHDAke3EMf3D/nVwWA4Oy8FhOTgsB4fl4LAcHJaDw3JwWA4Oy8FhOTgsB4fl4LAcHJaDw3JwWA4Oy8FhOTgsB4fl4LAcHJaDw3JwWA4Oy52I46chbr9oQXDAkcEBRwYHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgccGRxwZHDAkcEBRwYHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgccGRxwZHDAkcEBRwYHHBkccGRwwJHBAUcGBxwZHHBkcMCRwQFHBgcc2Sk4dCM4lMGhDA5lcCiDQxkcyuBQBocyOJTBoQwOZXAog0MZHMrgUAaHMjiUwaEMDmVwKINDGRzK4FAGhzI4lMGhDA5lcCiDQxkcyuBQBocyOJTBoQwOZXAog0MZHMrgUPYGP61QSCogu9UAAAAASUVORK5CYII=">
+<title>نظام المعمل</title>
+<style>
+*{box-sizing:border-box}body{font-family:-apple-system,Tahoma,Arial,sans-serif;margin:0;background:#f1f4f6;color:#222;padding-bottom:76px;-webkit-text-size-adjust:100%}
+header{background:#0b5c7a;color:#fff;padding:12px 14px;padding-top:max(12px,env(safe-area-inset-top));font-weight:bold;font-size:18px;position:sticky;top:0;z-index:5}
+main{max-width:900px;margin:0 auto;padding:10px}
+.card{background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;box-shadow:0 1px 3px #0002}
+h3{margin:0 0 8px;font-size:16px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #bbb;border-radius:8px;font:inherit;font-size:16px;margin:3px 0;background:#fff}
+.row{display:flex;gap:8px}.row>*{flex:1}
+button{padding:11px 14px;border:0;border-radius:8px;background:#0b8a5c;color:#fff;font:inherit;font-size:16px;margin:3px 0}
+button.d{background:#c0392b}button.g{background:#666}button.s{padding:7px 10px;font-size:14px}
+.item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #eee}
+.item small{color:#666;display:block}.item>div:first-child{flex:1;min-width:0}
+nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ccc;display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav a{flex:1;text-align:center;padding:9px 2px;font-size:12px;color:#555}nav a b{display:block;font-size:20px}nav a.on{color:#0b5c7a;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stats .card{text-align:center;margin:0}.stats b{font-size:26px;color:#0b5c7a;display:block}
+.H{color:#c0392b;font-weight:bold}.L{color:#d35400;font-weight:bold}
+.tl{max-height:300px;overflow:auto;border:1px solid #ddd;border-radius:8px}.tl label{display:flex;gap:10px;align-items:center;padding:10px;border-bottom:1px solid #eee}.tl input{width:22px;height:22px;margin:0}.tl span{flex:1}
+#toast{position:fixed;top:60px;left:10px;right:10px;z-index:20;pointer-events:none}#toast div{padding:10px;border-radius:8px;color:#fff;margin-bottom:6px;text-align:center}.ok{background:#0b8a5c}.er{background:#c0392b}
+table{width:100%;border-collapse:collapse}th,td{border:1px solid #999;padding:6px;text-align:right;font-size:14px}th{background:#eee}
+#printv{display:none;background:#fff;padding:12px;direction:rtl}
+#printv .h{text-align:center;border-bottom:2px solid #000;margin-bottom:8px;padding-bottom:6px}#printv .h h1{margin:0;font-size:22px}
+#printv .info{display:grid;grid-template-columns:1fr 1fr;gap:2px 10px;font-size:14px;margin-bottom:6px}
+.foot{display:flex;justify-content:space-between;margin-top:30px}
+body.printing header,body.printing main,body.printing nav{display:none}body.printing #printv{display:block}body.printing{padding:0;background:#fff}
+@media print{.np{display:none!important}@page{size:A4;margin:12mm}}
+</style></head><body>
+<header id="hd">المعمل</header><main id="main"></main><div id="printv"></div><div id="toast"></div>
+<nav id="nav"><a data-p="home"><b>🏠</b>الرئيسية</a><a data-p="reception"><b>➕</b>طلب جديد</a><a data-p="orders"><b>🧪</b>الطلبات</a><a data-p="patients"><b>👤</b>المرضى</a><a data-p="tests"><b>💲</b>الأسعار</a><a data-p="settings"><b>⚙️</b>إعدادات</a></nav>
+<script>
+"use strict";
+const TEST_MODE=/[?&]selftest=1/.test(location.search);
+const KEY=TEST_MODE?"labapp.selftest":"labapp.v1";
+const SEED=[["CBC - صورة دم كاملة","هيماتولوجي",120,"",null,null,""],["Hemoglobin - هيموجلوبين","هيماتولوجي",50,"g/dL",12,16,""],["TSH","هرمونات",150,"uIU/mL",0.4,4,""],["Ferritin - فيريتين","كيمياء",200,"ng/mL",13,150,""],["Vitamin D (25-OH)","فيتامينات",450,"ng/mL",30,100,""],["Glucose fasting - سكر صائم","كيمياء",40,"mg/dL",70,100,""],["Creatinine - كرياتينين","كيمياء",50,"mg/dL",0.6,1.3,""],["HBsAg","مناعة",100,"",null,null,"Negative"]];
+let DB;
+function fresh(){const d={v:1,seq:{p:0,t:0,o:0,i:0},patients:[],tests:[],orders:[],settings:{lab_name:"معمل التحاليل الطبية",lab_phone:"",lab_address:"",currency:"ج.م",pathologist:""}};
+ SEED.forEach(s=>d.tests.push({id:++d.seq.t,name:s[0],category:s[1],price:s[2],unit:s[3],ref_low:s[4],ref_high:s[5],ref_text:s[6]}));return d}
+function load(){try{const r=localStorage.getItem(KEY);DB=r?JSON.parse(r):fresh()}catch(e){DB=fresh()}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){toast("تعذر الحفظ: "+e.message,1)}}
+class Err extends Error{}
+const num=(v,d=null)=>{if(v===""||v==null)return d;const n=Number(v);if(!isFinite(n))throw new Err("قيمة رقمية غير صحيحة");return n};
+const now=()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`};
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt=x=>String(Math.round(x*100)/100);
+// ---- core logic ----
+const Core={
+ addPatient(b,id){const name=(b.name||"").trim();if(!name)throw new Err("اسم المريض مطلوب");let age=num(b.age);if(age!=null&&(age<0||age>130))throw new Err("السن غير صحيح");
+  const rec={name,age,gender:b.gender||"",phone:b.phone||"",doctor:b.doctor||""};
+  if(id){Object.assign(DB.patients.find(p=>p.id==id),rec);save();return id}
+  rec.id=++DB.seq.p;rec.created=now();DB.patients.unshift(rec);save();return rec.id},
+ delPatient(id){if(DB.orders.some(o=>o.patient_id==id))throw new Err("لا يمكن حذف مريض له تحاليل مسجلة");DB.patients=DB.patients.filter(p=>p.id!=id);save()},
+ saveTest(b,id){const name=(b.name||"").trim();if(!name)throw new Err("اسم التحليل مطلوب");const price=num(b.price,0);if(price<0)throw new Err("السعر لا يمكن أن يكون سالباً");
+  if(DB.tests.some(t=>t.name.toLowerCase()==name.toLowerCase()&&t.id!=id))throw new Err("اسم التحليل موجود بالفعل");
+  const rec={name,category:b.category||"",price,unit:b.unit||"",ref_low:num(b.ref_low),ref_high:num(b.ref_high),ref_text:b.ref_text||""};
+  if(id){Object.assign(DB.tests.find(t=>t.id==id),rec);save();return id}rec.id=++DB.seq.t;DB.tests.push(rec);save();return rec.id},
+ delTest(id){DB.tests=DB.tests.filter(t=>t.id!=id);save()},
+ addOrder(b){const ids=[...new Set(b.test_ids||[])];if(!ids.length)throw new Err("اختر تحليلاً واحداً على الأقل");
+  if(!DB.patients.some(p=>p.id==b.patient_id))throw new Err("المريض غير موجود");
+  const ts=ids.map(i=>{const t=DB.tests.find(x=>x.id==i);if(!t)throw new Err("تحليل غير موجود");return t});
+  const disc=num(b.discount,0),paid=num(b.paid,0);if(disc<0||paid<0)throw new Err("لا يمكن إدخال قيم سالبة");
+  if(disc>ts.reduce((a,t)=>a+t.price,0))throw new Err("الخصم أكبر من الإجمالي");
+  const o={id:++DB.seq.o,patient_id:+b.patient_id,created:now(),discount:disc,paid,notes:b.notes||"",items:ts.map(t=>({id:++DB.seq.i,test_id:t.id,name:t.name,unit:t.unit,ref_low:t.ref_low,ref_high:t.ref_high,ref_text:t.ref_text,price:t.price,result:""}))};
+  DB.orders.unshift(o);save();return o.id},
+ flag(it){const v=parseFloat(String(it.result).trim().replace(",","."));if(!isFinite(v)||String(it.result).trim()==="")return"";if(it.ref_low!=null&&v<it.ref_low)return"L";if(it.ref_high!=null&&v>it.ref_high)return"H";return""},
+ totals(o){const sub=o.items.reduce((a,i)=>a+(i.price||0),0),total=Math.max(sub-(o.discount||0),0);return{subtotal:sub,total,remaining:total-(o.paid||0)}},
+ setResults(oid,map){const o=DB.orders.find(x=>x.id==oid);o.items.forEach(i=>{if(i.id in map)i.result=map[i.id]});save()},
+ setPay(oid,disc,paid){const o=DB.orders.find(x=>x.id==oid);disc=num(disc,0);paid=num(paid,0);if(disc<0||paid<0||disc>this.totals(o).subtotal)throw new Err("قيم الخصم أو المدفوع غير صحيحة");o.discount=disc;o.paid=paid;save()},
+ delOrder(id){DB.orders=DB.orders.filter(o=>o.id!=id);save()},
+ importData(txt){let d;try{d=JSON.parse(txt)}catch(e){throw new Err("الملف غير صالح")}
+  if(!d||d.v!==1||!Array.isArray(d.patients)||!Array.isArray(d.tests)||!Array.isArray(d.orders)||!d.settings||!d.seq)throw new Err("ملف النسخة الاحتياطية غير صالح");DB=d;save()}
+};
+// ---- UI ----
+function toast(t,er){const d=document.createElement("div");d.className=er?"er":"ok";d.textContent=t;toastEl.appendChild(d);setTimeout(()=>d.remove(),2200)}
+const toastEl=document.getElementById("toast"),M=document.getElementById("main");
+const cur=()=>DB.settings.currency||"";const money=x=>fmt(x)+" "+cur();
+function guard(f){return(...a)=>{try{return f(...a)}catch(e){if(e instanceof Err){toast(e.message,1)}else{toast("خطأ: "+e.message,1);console.error(e)}}}}
+const $=id=>document.getElementById(id);
+const pages={home,reception,orders,patients,tests,settings};
+function go(p,arg){document.body.classList.remove("printing");document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.p==p));$("hd").textContent=DB.settings.lab_name||"المعمل";scrollTo(0,0);pages[p](arg)}
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>go(a.dataset.p));
+function home(){const d=new Date().toISOString().slice(0,10);const pend=DB.orders.filter(o=>o.items.some(i=>!String(i.result).trim())).length;
+ const today=DB.orders.filter(o=>o.created.startsWith(new Date().getFullYear()+"-"+String(new Date().getMonth()+1).padStart(2,"0")+"-"+String(new Date().getDate()).padStart(2,"0"))).length;
+ M.innerHTML=`<div class=stats><div class=card><b>${today}</b>طلبات اليوم</div><div class=card><b>${DB.patients.length}</b>المرضى</div><div class=card><b>${pend}</b>نتائج ناقصة</div></div><div class=card style="margin-top:12px"><button style="width:100%" onclick="go('reception')">+ طلب جديد</button><button class=g style="width:100%" onclick="go('settings')">نسخة احتياطية / استرجاع</button></div>`}
+function patients(){M.innerHTML=`<div class=card><h3 id=pt>مريض جديد</h3><input type=hidden id=pid><input id=pn placeholder="الاسم *"><div class=row><input id=pa type=number inputmode=numeric placeholder="السن"><select id=pg><option>ذكر<option>أنثى</select></div><input id=pp type=tel placeholder="الهاتف"><input id=pd placeholder="الطبيب المحول"><button onclick="savePat()">حفظ</button></div><div class=card><input id=q placeholder="بحث بالاسم أو الهاتف" oninput="listPat()"><div id=pl></div></div>`;listPat()}
+function listPat(){const q=$("q").value.trim().toLowerCase();const l=DB.patients.filter(p=>!q||p.name.toLowerCase().includes(q)||(p.phone||"").includes(q)).slice(0,200);
+ $("pl").innerHTML=l.map(p=>`<div class=item><div>${esc(p.name)}<small>${esc(p.age??"")} ${esc(p.gender)} ${esc(p.phone)}</small></div><div><button class="s" onclick="editPat(${p.id})">تعديل</button> <button class="s d" onclick="delPat(${p.id})">حذف</button></div></div>`).join("")||"<small>لا يوجد مرضى</small>"}
+const editPat=guard(id=>{const p=DB.patients.find(x=>x.id==id);$("pid").value=id;pn.value=p.name;pa.value=p.age??"";pg.value=p.gender||"ذكر";pp.value=p.phone;pd.value=p.doctor;$("pt").textContent="تعديل مريض";scrollTo(0,0)});
+const savePat=guard(()=>{Core.addPatient({name:pn.value,age:pa.value,gender:pg.value,phone:pp.value,doctor:pd.value},$("pid").value||null);toast("تم الحفظ");patients()});
+const delPat=guard(id=>{if(confirm("حذف المريض؟")){Core.delPatient(id);listPat()}});
+function tests(){M.innerHTML=`<div class=card><h3 id=tt0>تحليل جديد</h3><input type=hidden id=tid><input id=tn placeholder="اسم التحليل *"><input id=tc placeholder="القسم"><div class=row><input id=tp type=number inputmode=decimal step=any placeholder="السعر *"><input id=tu placeholder="الوحدة"></div><div class=row><input id=tl type=number inputmode=decimal step=any placeholder="أدنى طبيعي"><input id=th type=number inputmode=decimal step=any placeholder="أعلى طبيعي"></div><input id=tt placeholder="مرجع نصي (مثل Negative)"><button onclick="saveTest()">حفظ</button></div><div class=card>${DB.tests.slice().sort((a,b)=>(a.category||"").localeCompare(b.category||"")||a.name.localeCompare(b.name)).map(t=>`<div class=item><div>${esc(t.name)}<small>${esc(t.category)} | ${esc(t.unit)} | ${esc(t.ref_text||((t.ref_low??"")+" - "+(t.ref_high??"")))}</small></div><div><b>${t.price}</b><br><button class="s" onclick="editTest(${t.id})">تعديل</button> <button class="s d" onclick="delTest(${t.id})">حذف</button></div></div>`).join("")}</div>`}
+const editTest=guard(id=>{const t=DB.tests.find(x=>x.id==id);$("tid").value=id;tn.value=t.name;tc.value=t.category;tp.value=t.price;tu.value=t.unit;tl.value=t.ref_low??"";th.value=t.ref_high??"";tt.value=t.ref_text;$("tt0").textContent="تعديل تحليل";scrollTo(0,0)});
+const saveTest=guard(()=>{Core.saveTest({name:tn.value,category:tc.value,price:tp.value,unit:tu.value,ref_low:tl.value,ref_high:th.value,ref_text:tt.value},$("tid").value||null);toast("تم الحفظ");tests()});
+const delTest=guard(id=>{if(confirm("حذف التحليل من القائمة؟ (الطلبات السابقة لن تتأثر)")){Core.delTest(id);tests()}});
+let SEL=new Set();
+function reception(){SEL=new Set();M.innerHTML=`<div class=card><h3>1) المريض</h3><input id=sq placeholder="ابحث بالاسم/الهاتف" oninput="findPat()"><select id=ps></select><details><summary>+ مريض جديد</summary><input id=np1 placeholder="الاسم *"><div class=row><input id=np2 type=number placeholder="السن"><select id=np3><option>ذكر<option>أنثى</select></div><input id=np4 type=tel placeholder="الهاتف"><button class=g onclick="quickPat()">إضافة واختياره</button></details></div>
+<div class=card><h3>2) التحاليل</h3><input id=fq placeholder="بحث في التحاليل" oninput="drawT()"><div class=tl id=tlist></div></div>
+<div class=card><h3>3) الحساب</h3><div id=sum></div><div class=row><div>خصم<input id=dc type=number inputmode=decimal value=0 oninput="calc()"></div><div>مدفوع<input id=pd2 type=number inputmode=decimal value=0></div></div><textarea id=nt placeholder="ملاحظات" rows=2></textarea><button style="width:100%" onclick="saveOrder()">حفظ الطلب</button></div>`;findPat();drawT();calc()}
+function findPat(sel){const q=$("sq").value.trim().toLowerCase();ps.innerHTML=DB.patients.filter(p=>!q||p.name.toLowerCase().includes(q)||(p.phone||"").includes(q)).slice(0,100).map(p=>`<option value=${p.id}>${esc(p.name)} ${esc(p.phone)} (#${p.id})</option>`).join("");if(sel)ps.value=sel}
+const quickPat=guard(()=>{const id=Core.addPatient({name:np1.value,age:np2.value,gender:np3.value,phone:np4.value});sq.value="";findPat(id);toast("تمت إضافة المريض")});
+function drawT(){const f=$("fq").value.toLowerCase();tlist.innerHTML=DB.tests.filter(t=>t.name.toLowerCase().includes(f)).map(t=>`<label><input type=checkbox ${SEL.has(t.id)?"checked":""} onchange="tog(${t.id},this.checked)"><span>${esc(t.name)}</span><b>${t.price}</b></label>`).join("")}
+function tog(id,on){on?SEL.add(id):SEL.delete(id);calc()}
+function calc(){const s=DB.tests.filter(t=>SEL.has(t.id)).reduce((a,t)=>a+t.price,0);const d=+$("dc").value||0;$("sum").innerHTML=`عدد: ${SEL.size} | الإجمالي: ${money(s)} | الصافي: <b>${money(Math.max(s-d,0))}</b>`}
+const saveOrder=guard(()=>{if(!ps.value)throw new Err("اختر مريضاً");const id=Core.addOrder({patient_id:ps.value,test_ids:[...SEL],discount:dc.value,paid:pd2.value,notes:nt.value});toast("تم حفظ الطلب رقم "+id);go("orders",id)});
+function orders(id){if(id){return openOrder(id)}M.innerHTML=`<div class=card><input id=oq placeholder="بحث باسم المريض أو رقم الطلب" oninput="listOrd()"><div id=ol></div></div>`;listOrd()}
+function pname(o){const p=DB.patients.find(x=>x.id==o.patient_id);return p?p.name:"(محذوف)"}
+function listOrd(){const q=$("oq").value.trim().toLowerCase();$("ol").innerHTML=DB.orders.filter(o=>!q||pname(o).toLowerCase().includes(q)||String(o.id)==q).slice(0,200).map(o=>{const t=Core.totals(o),pend=o.items.filter(i=>!String(i.result).trim()).length;return `<div class=item onclick="go('orders',${o.id})"><div>#${o.id} ${esc(pname(o))}<small>${o.created} | ${pend?pend+" نتيجة ناقصة":"مكتملة"}</small></div><div><b>${fmt(t.total)}</b><small>متبقي ${fmt(t.remaining)}</small></div></div>`}).join("")||"<small>لا توجد طلبات</small>"}
+function openOrder(id){const o=DB.orders.find(x=>x.id==id);if(!o)return go("orders");const t=Core.totals(o);
+ M.innerHTML=`<div class=card><h3>طلب #${o.id} - ${esc(pname(o))}</h3>${o.items.map(i=>`<div style="padding:6px 0;border-bottom:1px solid #eee">${esc(i.name)} <small>(${esc(i.unit)} | ${esc(i.ref_text||(i.ref_low??"")+" - "+(i.ref_high??""))})</small><input data-i=${i.id} value="${esc(i.result)}" class="${Core.flag(i)}" placeholder="النتيجة" inputmode=text></div>`).join("")}<button style="width:100%" onclick="saveRes(${o.id})">حفظ النتائج</button></div>
+ <div class=card>الإجمالي ${money(t.subtotal)} | الصافي ${money(t.total)} | المتبقي <b>${money(t.remaining)}</b><div class=row><div>خصم<input id=d3 type=number inputmode=decimal value="${o.discount}"></div><div>مدفوع<input id=p3 type=number inputmode=decimal value="${o.paid}"></div></div><button onclick="savePay(${o.id})">حفظ الحساب</button></div>
+ <div class=card><button onclick="showPrint('result',${o.id})">طباعة النتائج</button> <button class=g onclick="showPrint('invoice',${o.id})">طباعة الفاتورة</button> <button class=d onclick="delOrd(${o.id})">حذف الطلب</button> <button class=g onclick="go('orders')">رجوع</button></div>`}
+const saveRes=guard(id=>{const m={};document.querySelectorAll("[data-i]").forEach(i=>m[i.dataset.i]=i.value);const mm={};for(const k in m)mm[+k]=m[k];Core.setResults(id,mm);toast("تم حفظ النتائج");openOrder(id)});
+const savePay=guard(id=>{Core.setPay(id,$("d3").value,$("p3").value);toast("تم");openOrder(id)});
+const delOrd=guard(id=>{if(confirm("حذف الطلب نهائياً؟")){Core.delOrder(id);go("orders")}});
+function printHTML(kind,oid){const o=DB.orders.find(x=>x.id==oid),p=DB.patients.find(x=>x.id==o.patient_id)||{},s=DB.settings,t=Core.totals(o),c=esc(s.currency);
+ let h=`<div class=h><h1>${esc(s.lab_name)}</h1><div>${esc(s.lab_address)} ${esc(s.lab_phone)}</div></div><div class=info><div>المريض: <b>${esc(p.name||"")}</b></div><div>رقم الطلب: ${o.id}</div><div>السن: ${esc(p.age??"")} | ${esc(p.gender||"")}</div><div>التاريخ: ${esc(o.created)}</div><div>الطبيب: ${esc(p.doctor||"")}</div></div>`;
+ if(kind=="result"){h+="<table><tr><th>التحليل<th>النتيجة<th>الوحدة<th>المعدل الطبيعي</tr>"+o.items.map(i=>{const f=Core.flag(i);const ref=i.ref_text||(i.ref_low!=null&&i.ref_high!=null?fmt(i.ref_low)+" - "+fmt(i.ref_high):i.ref_low!=null?"> "+fmt(i.ref_low):i.ref_high!=null?"< "+fmt(i.ref_high):"");
+   return `<tr><td>${esc(i.name)}<td ${f?"style='font-weight:bold'":""}>${esc(i.result)}${f=="H"?" ▲ (مرتفع)":f=="L"?" ▼ (منخفض)":""}<td>${esc(i.unit)}<td>${esc(ref)}</tr>`}).join("")+"</table>";
+   if(o.notes)h+=`<p>ملاحظات: ${esc(o.notes)}</p>`;h+=`<div class=foot><span>${esc(s.pathologist)}</span><span>ختم المعمل</span></div>`}
+ else{h+="<table><tr><th>التحليل<th>السعر</tr>"+o.items.map(i=>`<tr><td>${esc(i.name)}<td>${fmt(i.price||0)} ${c}</tr>`).join("")+`<tr><td>الإجمالي<td>${fmt(t.subtotal)} ${c}</tr><tr><td>الخصم<td>${fmt(o.discount||0)} ${c}</tr><tr><td><b>الصافي</b><td><b>${fmt(t.total)} ${c}</b></tr><tr><td>المدفوع<td>${fmt(o.paid||0)} ${c}</tr><tr><td>المتبقي<td>${fmt(t.remaining)} ${c}</tr></table>`}
+ return h}
+function showPrint(kind,oid){const pv=$("printv");pv.innerHTML=`<div class=np style="margin-bottom:8px"><button onclick="window.print()">🖨 طباعة / حفظ PDF</button> <button class=g onclick="go('orders',${oid})">رجوع</button></div>`+printHTML(kind,oid);document.body.classList.add("printing");scrollTo(0,0)}
+function settings(){const s=DB.settings;M.innerHTML=`<div class=card><h3>بيانات المعمل (تظهر في الطباعة)</h3>اسم المعمل<input id=s1 value="${esc(s.lab_name)}">العنوان<input id=s2 value="${esc(s.lab_address)}">الهاتف<input id=s3 value="${esc(s.lab_phone)}">العملة<input id=s4 value="${esc(s.currency)}">اسم الدكتور (للتوقيع)<input id=s5 value="${esc(s.pathologist)}"><button onclick="saveSet()">حفظ</button></div>
+ <div class=card><h3>النسخ الاحتياطي</h3><small>البيانات محفوظة على هذا الجهاز فقط. خد نسخة احتياطية بانتظام.</small><button style="width:100%" onclick="exportData()">تصدير نسخة احتياطية</button><input type=file id=imf accept=".json,application/json" onchange="importData(this)"></div>`}
+const saveSet=guard(()=>{Object.assign(DB.settings,{lab_name:s1.value,lab_address:s2.value,lab_phone:s3.value,currency:s4.value,pathologist:s5.value});save();$("hd").textContent=DB.settings.lab_name;toast("تم الحفظ")});
+function exportData(){const blob=new Blob([JSON.stringify(DB)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="lab-backup-"+now().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(a.href)},2000)}
+function importData(inp){const f=inp.files[0];if(!f)return;if(!confirm("سيتم استبدال كل البيانات الحالية بالنسخة الاحتياطية. متأكد؟")){inp.value="";return}const r=new FileReader();r.onload=guard(()=>{Core.importData(r.result);toast("تم الاسترجاع");go("home")});r.readAsText(f)}
+// ---- self test (open index.html?selftest=1) ----
+function selfTest(){const out=[];const ok=(n,c)=>out.push((c?"PASS ":"FAIL ")+n);const thr=(n,f)=>{try{f();ok(n,false)}catch(e){ok(n,e instanceof Err)}};
+ localStorage.removeItem(KEY);DB=fresh();
+ const pid=Core.addPatient({name:"رشا",age:32,gender:"أنثى"});const by={};DB.tests.forEach(t=>by[t.name.split(" ")[0]]=t.id);
+ const oid=Core.addOrder({patient_id:pid,test_ids:[by.TSH,by.Ferritin,by.Vitamin],discount:50,paid:300});let o=DB.orders[0],t=Core.totals(o);
+ ok("totals 800/750/450",t.subtotal==800&&t.total==750&&t.remaining==450);
+ const m={};o.items.forEach(i=>m[i.id]={TSH:"2.85",Ferritin:"23.0",Vitamin:"14.9"}[i.name.split(" ")[0]]);Core.setResults(oid,m);
+ const fl={};o.items.forEach(i=>fl[i.name.split(" ")[0]]=Core.flag(i));ok("flags",fl.TSH==""&&fl.Ferritin==""&&fl.Vitamin=="L");
+ o.items[0].result="9";ok("high flag",Core.flag(o.items[0])=="H");o.items[0].result="";ok("blank no flag",Core.flag(o.items[0])=="");
+ const rp=printHTML("result",oid);ok("result print",rp.includes("رشا")&&rp.includes("منخفض"));ok("invoice print",printHTML("invoice",oid).includes("750"));
+ Core.saveTest({name:"TSH",price:999},by.TSH);ok("old order price unchanged",Core.totals(DB.orders[0]).subtotal==800);
+ thr("empty name",()=>Core.addPatient({name:" "}));thr("age 500",()=>Core.addPatient({name:"x",age:500}));thr("neg price",()=>Core.saveTest({name:"n",price:-1}));
+ thr("dup test",()=>Core.saveTest({name:"hemoglobin - هيموجلوبين",price:1}));thr("empty order",()=>Core.addOrder({patient_id:pid,test_ids:[]}));thr("bad patient",()=>Core.addOrder({patient_id:999,test_ids:[1]}));
+ thr("discount>total",()=>Core.addOrder({patient_id:pid,test_ids:[by.HBsAg],discount:9999}));thr("delete patient with orders",()=>Core.delPatient(pid));
+ const p2=(()=>{const x=DB.patients[0];const s=printHTML("result",oid);return s})();
+ const xp=Core.addPatient({name:"<"+"script>alert(1)<"+"/script>"});const xo=Core.addOrder({patient_id:xp,test_ids:[1]});ok("xss escaped",!printHTML("result",xo).includes("<"+"script>"));
+ const bak=JSON.stringify(DB);Core.delOrder(xo);Core.delPatient(xp);Core.importData(bak);ok("backup roundtrip",DB.orders.length==2&&DB.patients.length==2);
+ thr("bad import",()=>Core.importData("{}"));thr("bad import json",()=>Core.importData("nope"));
+ save();load();ok("persist reload",DB.orders.length==2);
+ localStorage.removeItem(KEY);document.title=out.some(l=>l.startsWith("FAIL"))?"SELFTEST FAIL":"SELFTEST PASS";
+ document.body.innerHTML="<pre id=r dir=ltr style='font-size:14px'>"+out.join("\n")+"</pre>"}
+if(TEST_MODE){selfTest()}else{load();if(!DB.settings)DB=fresh();go(location.hash.slice(1).startsWith("order/")?"orders":(pages[location.hash.slice(1)]?location.hash.slice(1):"home"),location.hash.startsWith("#order/")?+location.hash.slice(7):undefined);
+ if("serviceWorker"in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{})}
+</script></body></html>
